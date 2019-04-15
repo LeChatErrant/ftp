@@ -1,5 +1,6 @@
 require "socket"
 require "./Commands"
+require "./User"
 
 class FTPServer
   getter port
@@ -9,26 +10,16 @@ class FTPServer
   @@anonymous = "anonymous"
 
   include Commands
+  include User
 
-  class User
-    property socket : TCPSocket
-    property data_socket : TCPSocket | Nil
-    property working_directory : String
-    property is_authentified = false
-    property is_activ = false
-    property username = nil.as(String | Nil)
-
-    def initialize(@socket, @working_directory)
-    end
-  end
-
-  def initialize(@port = 8000, @root = ".")
+  def initialize(@port = 8000, root = '.')
     @server = TCPServer.new("0.0.0.0", port.to_i)
+    @root = File.expand_path(root)
   end
 
   def start
     spawn do
-      puts "Server now listening on port #{@port}..."
+      puts "FTP server, rooted at #{@root}, now listening on port #{@port}..."
       loop do
         socket = @server.accept
         handle_client(User.new(socket, @root))
@@ -53,11 +44,8 @@ class FTPServer
       return
     end
     callback = COMMANDS[command.downcase]?
-    if callback
-      callback.call(user, args)
-    else
-      FTPServer.reply(user.socket, 500, "Unknown command.")
-    end
+    callback ||= COMMANDS["unknown"]
+    callback.call(user, args)
   end
 
   def self.reply(socket, code, message)

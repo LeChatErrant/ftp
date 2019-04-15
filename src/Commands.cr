@@ -8,7 +8,11 @@ module Commands
     "help" => ->help(FTPServer::User, Array(String)),
     "user" => ->user(FTPServer::User, Array(String)),
     "pass" => ->pass(FTPServer::User, Array(String)),
-    "type" => ->type(FTPServer::User, Array(String))
+    "pwd" => ->pwd(FTPServer::User, Array(String)),
+    "cwd" => ->cwd(FTPServer::User, Array(String)),
+    "cdup" => ->cdup(FTPServer::User, Array(String)),
+    "type" => ->type(FTPServer::User, Array(String)),
+    "unknown" => ->unknown(FTPServer::User, Array(String))
   }
 
   ANONYM_COMMANDS = { "quit", "user", "pass" }
@@ -70,4 +74,27 @@ def pass(user, args)
   else
     FTPServer.reply(user.socket, 530, "Login incorrect")
   end
+end
+
+def pwd(user, args)
+  FTPServer.reply(user.socket, 257, "\"#{user.working_directory}\"")
+end
+
+def unknown(user, args)
+  FTPServer.reply(user.socket, 500, "Unknown command.")
+end
+
+def cwd(user, args)
+  return FTPServer.reply(user.socket, 550, "Failed to change directory.") if args.size != 1
+  path = File.expand_path(args[0], user.working_directory)
+  if !File.directory?(path)
+    FTPServer.reply(user.socket, 550, "Failed to change directory.")
+  else
+    user.working_directory = path
+    FTPServer.reply(user.socket, 250, "Directory successfully changed.")
+  end
+end
+
+def cdup(user, args)
+  cwd(user, [".."])
 end
