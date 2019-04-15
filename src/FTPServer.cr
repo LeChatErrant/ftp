@@ -39,7 +39,7 @@ class FTPServer
   def handle_client(user)
     spawn do
       while !user.socket.closed? && (line = user.socket.gets)
-        handle_request(user, line.chomp)
+        handle_request(user, line.rstrip)
       end
     end
   end
@@ -48,6 +48,10 @@ class FTPServer
     args = message.split(" ")
     command = args.shift
     puts "Command: #{command}, args: #{args}"
+    if !user.is_authentified && !ANONYM_COMMANDS.includes? command
+      FTPServer.reply(user.socket, 530, "Please login with USER and PASS.")
+      return
+    end
     callback = COMMANDS[command.downcase]?
     if callback
       callback.call(user, args)

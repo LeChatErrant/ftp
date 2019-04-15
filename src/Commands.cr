@@ -10,6 +10,8 @@ module Commands
     "pass" => ->pass(FTPServer::User, Array(String)),
     "type" => ->type(FTPServer::User, Array(String))
   }
+
+  ANONYM_COMMANDS = { "quit", "user", "pass" }
 end
 
 # alias FTPCallback = Proc(TCPSocket, Array(String))
