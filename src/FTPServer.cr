@@ -29,6 +29,7 @@ class FTPServer
 
   def handle_client(user)
     spawn do
+      FTPServer.reply(user.socket, 220, "Welcome on crystalFTP server!")
       while !user.socket.closed? && (line = user.socket.gets)
         handle_request(user, line.rstrip)
       end
