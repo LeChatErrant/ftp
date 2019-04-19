@@ -87,7 +87,7 @@ end
 def cwd(user, args)
   return FTPServer.reply(user.socket, 550, "Failed to change directory.") if args.size != 1
   path = File.expand_path(args[0], user.working_directory)
-  if !File.directory?(path)
+  if !File.directory? path
     FTPServer.reply(user.socket, 550, "Failed to change directory.")
   else
     user.working_directory = path
@@ -97,4 +97,15 @@ end
 
 def cdup(user, args)
   cwd(user, [".."])
+end
+
+def dele(user, args)
+  return FTPServer.reply(user.socket, 550, "Failed to delete file.") if args.size != 1
+  path = File.expand_path(args[0], user.working_directory)
+  return FTPServer.reply(user.socket, 550, "Failed to delete file.") if !File.exists? args[0]
+  user.working_directory = File.expand_path("..", user.working_directory) if path == user.working_directory
+  File.delete path
+  FTPServer.reply(user.socket, 250, "File successfully deleted.")
+rescue
+  FTPServer.reply(user.socket, 550, "Failed to delete file.")
 end
