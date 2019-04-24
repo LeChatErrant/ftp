@@ -14,7 +14,7 @@ def pass(user, args)
     FTPServer.reply(user.socket, 230, "Already logged in.")
   elsif user.username.nil?
     FTPServer.reply(user.socket, 503, "Login with USER first.")
-  elsif user.username == CrystalFTP::ANONYMOUS || args[0] == CrystalFTP::PASSWORD
+  elsif user.username == FTPServer::ANONYMOUS || args[0] == FTPServer::PASSWORD
     user.is_authentified = true
     FTPServer.reply(user.socket, 230, "Login successful.")
   else

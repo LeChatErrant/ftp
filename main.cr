@@ -9,6 +9,7 @@ include CrystalFTP
 
 port, root = ARGV
 
+puts FTPServer::VERSION
 server = FTPServer.new(port.to_i, root)
 server.start
 sleep

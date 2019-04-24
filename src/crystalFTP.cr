@@ -6,17 +6,21 @@ require "./User.cr"
 require "./Config.cr"
 
 module CrystalFTP
-  include Config
 
   class FTPServer
     getter port
     getter root
 
     include Commands
+    include Config
 
-    def initialize(@port = 8000, root = '.')
+    def initialize(@port = FTPServer::DEFAULT_PORT, root = FTPServer::DEFAULT_ROOT)
       @server = TCPServer.new("0.0.0.0", port.to_i)
       @root = File.expand_path(root)
+    end
+
+    def self.reply(socket, code, message)
+      socket << code << " " << message << "\r\n"
     end
 
     def start
@@ -34,10 +38,12 @@ module CrystalFTP
 
     private def handle_client(user)
       spawn do
+        puts "New user!"
         welcome user
         while !user.socket.closed? && (line = user.socket.gets)
           handle_request(user, line.rstrip)
         end
+        puts "A user disconnected..."
       end
     end
 
@@ -52,19 +58,20 @@ module CrystalFTP
       {command, args}
     end
 
-    private def handle_request(user, message)
-      command, args = parse_command message
+    private def is_authentified?(user, command)
       if !user.is_authentified && !ANONYM_COMMANDS.includes? command
         FTPServer.reply(user.socket, 530, "Please login with USER and PASS.")
-        return
+        return false
       end
+      true
+    end
+
+    private def handle_request(user, message)
+      command, args = parse_command message
+      return if !is_authentified? user, command
       callback = COMMANDS[command.downcase]?
       callback ||= COMMANDS["unknown"]
       callback.call(user, args)
-    end
-
-    def self.reply(socket, code, message)
-      socket << code << " " << message << "\r\n"
     end
 
   end

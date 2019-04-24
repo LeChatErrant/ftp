@@ -3,6 +3,9 @@ require "./commands/**"
 require "./User.cr"
 
 module Commands
+
+  ANONYM_COMMANDS = { "quit", "user", "pass" }
+
   COMMANDS = {
   "quit" => ->quit(User::UserData, Array(String)),
   "noop" => ->noop(User::UserData, Array(String)),
@@ -18,8 +21,6 @@ module Commands
   "port" => ->port(User::UserData, Array(String)),
   "list" => ->list(User::UserData, Array(String)),
   "unknown" => ->unknown(User::UserData, Array(String))
-}
-
-  ANONYM_COMMANDS = { "quit", "user", "pass" }
+  }
 
 end
