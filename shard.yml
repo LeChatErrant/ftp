@@ -1,0 +1,9 @@
+name: crystalFTP
+version: 0.1.0
+
+authors:
+  - LeChatErrant <guillaume.hector@epitech.eu>
+
+crystal: 0.28.0
+
+license: MIT

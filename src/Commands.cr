@@ -1,22 +1,25 @@
 require "socket"
-require "./FTPServer.cr"
+require "./User.cr"
 
 module Commands
   COMMANDS = {
-    "quit" => ->quit(FTPServer::User, Array(String)),
-    "noop" => ->noop(FTPServer::User, Array(String)),
-    "help" => ->help(FTPServer::User, Array(String)),
-    "user" => ->user(FTPServer::User, Array(String)),
-    "pass" => ->pass(FTPServer::User, Array(String)),
-    "pwd" => ->pwd(FTPServer::User, Array(String)),
-    "cwd" => ->cwd(FTPServer::User, Array(String)),
-    "cdup" => ->cdup(FTPServer::User, Array(String)),
-    "type" => ->type(FTPServer::User, Array(String)),
-    "dele" => ->dele(FTPServer::User, Array(String)),
-    "unknown" => ->unknown(FTPServer::User, Array(String))
-  }
+  "quit" => ->quit(User::UserData, Array(String)),
+  "noop" => ->noop(User::UserData, Array(String)),
+  "help" => ->help(User::UserData, Array(String)),
+  "user" => ->user(User::UserData, Array(String)),
+  "pass" => ->pass(User::UserData, Array(String)),
+  "pwd" => ->pwd(User::UserData, Array(String)),
+  "cwd" => ->cwd(User::UserData, Array(String)),
+  "cdup" => ->cdup(User::UserData, Array(String)),
+  "type" => ->type(User::UserData, Array(String)),
+  "dele" => ->dele(User::UserData, Array(String)),
+  "pasv" => ->pasv(User::UserData, Array(String)),
+  "port" => ->port(User::UserData, Array(String)),
+  "list" => ->list(User::UserData, Array(String)),
+  "unknown" => ->unknown(User::UserData, Array(String))
+}
 
-  ANONYM_COMMANDS = { "quit", "user", "pass" }
+ANONYM_COMMANDS = { "quit", "user", "pass" }
 end
 
 # alias FTPCallback = Proc(TCPSocket, Array(String))
@@ -122,4 +125,34 @@ def dele(user, args)
 rescue e
   puts e.message
   FTPServer.reply(user.socket, 550, "Failed to delete file.")
+end
+
+def port(user, args)
+end
+
+def pasv(user, args)
+  binded_port = Random.rand(65535 - 1023) + 1023
+  puts binded_port
+  user.server = TCPServer.new("0.0.0.0", binded_port, 1)
+rescue
+  FTPServer.reply(user.socket, 527, "PASV failed")
+end
+
+def list(user, args)
+  return FTPServer.reply(user.socket, 425, "Use PORT or PASV first.") if user.server.nil?
+  process_args = ["-la"]
+  if args.size > 0
+    process_args << File.expand_path(args[0], user.working_directory)
+  else
+    process_args << user.working_directory
+  end
+  spawn do
+    user.data_socket = user.server.try &.accept?
+    raise "An error occured" if user.data_socket.nil?
+    user.data_socket.try &.<<("FDP")
+    Process.run("ls", process_args)
+    puts "Connected, and DT finished"
+  end
+rescue
+  FTPServer.reply(user.socket, 425, "Data transfert failed.")
 end

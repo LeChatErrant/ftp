@@ -1,7 +1,10 @@
 module User
-  class User
+  extend self
+
+  class UserData
     getter root : String
     property socket : TCPSocket
+    property server : TCPServer | Nil
     property data_socket : TCPSocket | Nil
     property working_directory : String
     property is_authentified = false
