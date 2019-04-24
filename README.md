@@ -36,4 +36,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [your-name-here](https://github.com/LeChatErrant) - creator and maintainer
+- [LeChatErrant](https://github.com/LeChatErrant) - creator and maintainer
