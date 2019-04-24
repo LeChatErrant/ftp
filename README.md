@@ -2,9 +2,17 @@
 
 lightweight rfc95 FTP server written in crystal lang
 
-
 [![Build Status](https://travis-ci.org/LeChatErrant/crystalFTP.svg?branch=master)](https://travis-ci.org/LeChatErrant/crystalFTP)
 
+### Note from the creator
+
+Hello guys! ;)
+
+This little baby is still under development. My goal is to make a shard of it once totally finished.
+
+Actually, it's my first project written in Crystal : feel free to contribute, or to send tips ! I'm doing it only to train myself.
+
+And don't hesitate to give a star if you like it, of course!
 
 ## Installation
 
