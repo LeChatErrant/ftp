@@ -1,8 +1,7 @@
-# crystalFTP
+# crystalFTP [![Build Status](https://travis-ci.org/LeChatErrant/crystalFTP.svg?branch=master)](https://travis-ci.org/LeChatErrant/crystalFTP)
+
 
 lightweight rfc95 FTP server written in crystal lang
-
-[![Build Status](https://travis-ci.org/LeChatErrant/crystalFTP.svg?branch=master)](https://travis-ci.org/LeChatErrant/crystalFTP)
 
 ### Note from the creator
 
