@@ -3,5 +3,5 @@ def pasv(user, args)
   puts binded_port
   user.server = TCPServer.new("0.0.0.0", binded_port, 1)
 rescue
-  FTPServer.reply(user.socket, 527, "PASV failed")
+  user.reply(527, "PASV failed")
 end

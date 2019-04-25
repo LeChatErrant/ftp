@@ -11,13 +11,13 @@ def rm_r(path : String) : Nil
 end
 
 def dele(user, args)
-  return FTPServer.reply(user.socket, 550, "Failed to delete file.") if args.size != 1
+  return user.reply(550, "Failed to delete file.") if args.size != 1
   path = File.expand_path(args[0], user.working_directory)
-  return FTPServer.reply(user.socket, 550, "Failed to delete file.") if !File.exists? args[0]
+  return user.reply(550, "Failed to delete file.") if !File.exists? args[0]
   user.working_directory = File.expand_path("..", user.working_directory) if path == user.working_directory
   rm_r path
-  FTPServer.reply(user.socket, 250, "File successfully deleted.")
+  user.reply(250, "File successfully deleted.")
 rescue e
   puts e.message
-  FTPServer.reply(user.socket, 550, "Failed to delete file.")
+  user.reply(550, "Failed to delete file.")
 end

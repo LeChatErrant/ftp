@@ -19,10 +19,6 @@ module CrystalFTP
       @root = File.expand_path(root)
     end
 
-    def self.reply(socket, code, message)
-      socket << code << " " << message << "\r\n"
-    end
-
     def start
       spawn do
         puts "FTP server, rooted at #{@root}, now listening on port #{@port}..."
@@ -48,7 +44,7 @@ module CrystalFTP
     end
 
     private def welcome(user)
-      FTPServer.reply(user.socket, 220, "Welcome on crystalFTP server!")
+      user.reply(220, "Welcome on crystalFTP server!")
     end
 
     private def parse_command(message)
@@ -60,7 +56,7 @@ module CrystalFTP
 
     private def is_authentified?(user, command)
       if !user.is_authentified && !ANONYM_COMMANDS.includes? command
-        FTPServer.reply(user.socket, 530, "Please login with USER and PASS.")
+        user.reply(530, "Please login with USER and PASS.")
         return false
       end
       true

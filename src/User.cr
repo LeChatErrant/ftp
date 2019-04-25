@@ -14,5 +14,14 @@ module User
     def initialize(@socket, @root)
       @working_directory = root
     end
+
+    def reply(code, message)
+      socket << code << " " << message << "\r\n"
+    end
+
+    def quit()
+      socket.close()
+    end
+
   end
 end

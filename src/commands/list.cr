@@ -1,5 +1,5 @@
 def list(user, args)
-  return FTPServer.reply(user.socket, 425, "Use PORT or PASV first.") if user.server.nil?
+  return user.reply(425, "Use PORT or PASV first.") if user.server.nil?
   process_args = ["-la"]
   if args.size > 0
     process_args << File.expand_path(args[0], user.working_directory)
@@ -14,5 +14,5 @@ def list(user, args)
     puts "Connected, and DT finished"
   end
 rescue
-  FTPServer.reply(user.socket, 425, "Data transfert failed.")
+  user.reply(425, "Data transfert failed.")
 end
