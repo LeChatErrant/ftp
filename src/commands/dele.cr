@@ -1,4 +1,4 @@
-def rm_r(path : String) : Nil
+private def rm_r(path : String) : Nil
   if Dir.exists?(path) && !File.symlink?(path)
     Dir.each_child(path) do |entry|
       src = File.join(path, entry)

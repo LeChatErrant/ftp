@@ -29,9 +29,22 @@ Run `shards install`
 
 https://lechaterrant.github.io/crystalFTP/
 
-## Development
+## TODO
 
-TODO: Write development instructions here
+- [x] Simple server
+- [x] Handling multiple clients (one fiber per client)
+- [x] Basic commands (QUIT, NOOP, USER, PASS, UNKNOWN)
+- [x] Basic working directory commands (PWD, CWD, CDUP)
+- [x] DELE command
+- [ ] TYPE command
+- [x] HELP command
+- [x] Object oriented version
+- [ ] Configuration file in JSON or YAML
+- [ ] Documentation
+- [ ] Specs
+- [ ] ACTIV mode
+- [ ] PASSIV mode
+- [ ] Basic data transferts (LIST, RETR, STOR)
 
 ## Contributing
 
