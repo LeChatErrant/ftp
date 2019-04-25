@@ -45,6 +45,7 @@ https://lechaterrant.github.io/crystalFTP/
 - [ ] ACTIV mode
 - [ ] PASSIV mode
 - [ ] Basic data transferts (LIST, RETR, STOR)
+- [ ] Other RFC95 compliant commands
 
 ## Contributing
 
