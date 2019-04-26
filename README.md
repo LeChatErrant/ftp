@@ -8,6 +8,8 @@
 
 > lightweight rfc95 FTP server written in crystal lang
 
+---
+
 ### Note from the creator
 
 Hello guys! ;)
