@@ -14,7 +14,6 @@ def dele(user, args)
   return user.reply(550, "Failed to delete file.") if args.size != 1
   path = File.expand_path(args[0], user.working_directory)
   return user.reply(550, "Failed to delete file.") if !File.exists? args[0]
-  user.working_directory = File.expand_path("..", user.working_directory) if path == user.working_directory
   rm_r path
   user.reply(250, "File successfully deleted.")
 rescue e
