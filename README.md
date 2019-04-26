@@ -2,8 +2,8 @@
 [![Build Status](https://travis-ci.org/LeChatErrant/crystalFTP.svg?branch=master)](https://travis-ci.org/LeChatErrant/crystalFTP)
 [![star this repo](http://githubbadges.com/star.svg?user=LeChatErrant&repo=crystalFTP&style=default)](https://github.com/LeChatErrant/crystalFTP)
 [![fork this repo](http://githubbadges.com/fork.svg?user=LeChatErrant&repo=crystalFTP&style=default)](https://github.com/LeChatErrant/crystalFTP/fork)
-[![GitHub Issues](https://img.shields.io/github/issues/anfederico/Clairvoyant.svg)](https://github.com/anfederico/Clairvoyant/issues)
-![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
+[![GitHub Issues](https://img.shields.io/github/issues/LeChatErrant/crystalFTP.svg)](https://github.com/LeChatErrant/crystalFTP/issues)
+![Contributions welcome](https://img.shields.io/badge/contributions-welcome-green.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 > lightweight rfc95 FTP server written in crystal lang
