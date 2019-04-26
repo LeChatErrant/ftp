@@ -1,3 +1,4 @@
+#BUILDER
 FROM crystallang/crystal
 
 WORKDIR /crystalFTP
@@ -11,5 +12,4 @@ COPY shard.yml .
 RUN shards install
 RUN crystal build main.cr --release
 
-CMD ["./main 8000 ."]
-
+CMD ["./main", "8000", "."]
