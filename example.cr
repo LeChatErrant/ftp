@@ -10,6 +10,11 @@ include CrystalFTP
 port, root = ARGV
 
 puts "Using version #{FTPServer::VERSION}"
-server = FTPServer.new(port: port.to_i, root: root)
-server.start
+
+begin
+  server = FTPServer.new(port: port.to_i, root: root)
+  server.start
+rescue exception
+  puts exception.message
+end
 sleep
