@@ -51,6 +51,7 @@ module CrystalFTP
     def initialize(@port : Int32 = 2121, root : String = ".")
       @server = TCPServer.new("0.0.0.0", port.to_i)
       @root = File.expand_path(root)
+      raise "Cannot mount the server on directory #{@root} : Directory not found." if !File.directory? @root
     end
 
     # Starting the FTP server, making clients able to connect and communicate with it
