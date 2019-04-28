@@ -49,7 +49,7 @@ To try it, simply run `crystal build example.cr --release`
 
 Then you can execute it with `./example port root_directory`
 
-This will run a FTP server, listening on the specified port and mounted on 'root_directory"
+This will run a FTP server, listening on the specified port and mounted on 'root_directory'
 
 ## Documentation
 
