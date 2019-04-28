@@ -10,6 +10,6 @@ def port(user, args)
   return user.reply(500, "Illegal PORT command.") if args.size != 1
   ip, port = parse_arg(args[0])
   return user.reply(500, "Illegal PORT command.") if !ip || !port
-  #TODO: Connect here
+  user.logger.info "Entering activ mode on #{ip}:#{port}"
   user.reply(200, "PORT command successful (ip:#{ip}, port:#{port}). Consider using PASV.")
 end

@@ -1,3 +1,4 @@
+require "logger"
 require "./src/CrystalFTP.cr"
 
 if ARGV.size != 2
@@ -13,6 +14,7 @@ puts "Using version #{FTPServer::VERSION}"
 
 begin
   server = FTPServer.new(port: port.to_i, root: root)
+  server.verbose_level = Logger::DEBUG
   server.start
 rescue exception
   puts exception.message

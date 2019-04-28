@@ -1,4 +1,5 @@
 require "socket"
+require "logger"
 require "./Commands.cr"
 require "./User.cr"
 
@@ -35,6 +36,19 @@ module CrystalFTP
     # Path on which the server is mounted
     getter root
 
+    macro default_severity_level
+      {% if flag?(:release) %}
+        Logger::ERROR
+      {% else %}
+        Logger::INFO
+      {% end %}
+    end
+
+    # Logger used with the FTP server
+    #
+    # NOTE: When building in release mode, the severity is by default at Logger::ERROR. Otherwise, it is set by default at Logger::INFO
+    @logger = Logger.new(STDERR, level: default_severity_level)
+
     # Default password for new users
     PASSWORD = "password"
 
@@ -63,25 +77,32 @@ module CrystalFTP
     # sleep # Yield the execution
     def start
       spawn do
-        puts "FTP server, rooted at #{@root}, now listening on port #{@port}..."
+        @logger.info "FTP server started, rooted at #{@root} and listening on port #{@port}..."
         loop &->accept_client
       end
+    end
+
+    # Change the level of severity beyond which the logger of your `FTPServer` will print logs
+    #
+    # NOTE: When building in release mode, the severity is by default at Logger::ERROR. Otherwise, it is set by default at Logger::INFO
+    def verbose_level=(level : Logger::Severity)
+      @logger.level = level
     end
 
     private def accept_client()
       socket = @server.accept?
       return if socket.nil?
-      handle_client(User.new(socket, @root))
+      handle_client(User.new(socket, @root, @logger))
     end
 
     private def handle_client(user)
       spawn do
-        puts "New user!"
+        @logger.info "New user!"
         welcome user
         while !user.socket.closed? && (line = user.socket.gets)
           handle_request(user, line.rstrip)
         end
-        puts "A user disconnected..."
+        @logger.info "A user disconnected..."
       end
     end
 
@@ -92,7 +113,7 @@ module CrystalFTP
     private def parse_command(message)
       args = message.split(" ")
       command = args.shift
-      puts "Command: #{command}, args: #{args}"
+      @logger.debug "Command: #{command}, args: #{args}"
       {command, args}
     end
 
