@@ -1,7 +1,6 @@
 require "socket"
 require "./Commands.cr"
 require "./User.cr"
-require "./Config.cr"
 
 # An FTP server , or File Transfert Protocol server, is a server used to store files and interact with it from a remote client, through a protocol edicted by the RFC95
 #
@@ -27,13 +26,21 @@ module CrystalFTP
   # This will launch a FTP server, listening for clients at port 8000, rooted in the current directory
   class FTPServer
 
+    # :nodoc:
+    VERSION = "0.3.0"
+
     # Port on which the server listen
     getter port
 
     # Path on which the server is mounted
     getter root
 
-    include Config
+    # Default password for new users
+    PASSWORD = "password"
+
+    # Downcased anonymous username
+    #  (meaning connecting with it will start an anonymous session)
+    ANONYMOUS = "anonymous"
 
     # Create a FTP server, configurate to listen to `port`, and mounted on `root`
     #
@@ -42,7 +49,7 @@ module CrystalFTP
     # ```
     # NOTE : The returned FTP server is not listening for clients : it needs to be started, with `#start`
     # TODO : Add a configuration file, or any better way to configure it than FTPServer::DEFAULT_PORT etc
-    def initialize(@port : Int32 = FTPServer::DEFAULT_PORT, root : String = FTPServer::DEFAULT_ROOT )
+    def initialize(@port : Int32 = 2121, root : String = ".")
       @server = TCPServer.new("0.0.0.0", port.to_i)
       @root = File.expand_path(root)
     end
