@@ -48,7 +48,6 @@ module CrystalFTP
     # my_ftp_server = CrystalFTP::FTPServer.new(port: 8000, root: "/home")
     # ```
     # NOTE : The returned FTP server is not listening for clients : it needs to be started, with `#start`
-    # TODO : Add a configuration file, or any better way to configure it than FTPServer::DEFAULT_PORT etc
     def initialize(@port : Int32 = 2121, root : String = ".")
       @server = TCPServer.new("0.0.0.0", port.to_i)
       @root = File.expand_path(root)
