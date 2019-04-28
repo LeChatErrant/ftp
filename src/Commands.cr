@@ -2,25 +2,27 @@ require "socket"
 require "./commands/**"
 require "./User.cr"
 
-module Commands
+module CrystalFTP
 
+  #Commands which can be used without being logged
   ANONYM_COMMANDS = { "quit", "user", "pass" }
 
+  #List of available commands, binded to their callbacks
   COMMANDS = {
-  "quit" => ->quit(User::UserData, Array(String)),
-  "noop" => ->noop(User::UserData, Array(String)),
-  "help" => ->help(User::UserData, Array(String)),
-  "user" => ->user(User::UserData, Array(String)),
-  "pass" => ->pass(User::UserData, Array(String)),
-  "pwd" => ->pwd(User::UserData, Array(String)),
-  "cwd" => ->cwd(User::UserData, Array(String)),
-  "cdup" => ->cdup(User::UserData, Array(String)),
-  "type" => ->type(User::UserData, Array(String)),
-  "dele" => ->dele(User::UserData, Array(String)),
-  "pasv" => ->pasv(User::UserData, Array(String)),
-  "port" => ->port(User::UserData, Array(String)),
-  "list" => ->list(User::UserData, Array(String)),
-  "unknown" => ->unknown(User::UserData, Array(String))
+  "quit" => ->quit(User, Array(String)),
+  "noop" => ->noop(User, Array(String)),
+  "help" => ->help(User, Array(String)),
+  "user" => ->user(User, Array(String)),
+  "pass" => ->pass(User, Array(String)),
+  "pwd" => ->pwd(User, Array(String)),
+  "cwd" => ->cwd(User, Array(String)),
+  "cdup" => ->cdup(User, Array(String)),
+  "type" => ->type(User, Array(String)),
+  "dele" => ->dele(User, Array(String)),
+  "pasv" => ->pasv(User, Array(String)),
+  "port" => ->port(User, Array(String)),
+  "list" => ->list(User, Array(String)),
+  "unknown" => ->unknown(User, Array(String))
   }
 
 end

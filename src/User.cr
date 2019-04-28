@@ -1,7 +1,5 @@
-module User
-  extend self
-
-  class UserData
+module CrystalFTP
+  private class User
     getter root : String
     property socket : TCPSocket
     property server : TCPServer | Nil

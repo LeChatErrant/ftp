@@ -45,7 +45,7 @@ https://lechaterrant.github.io/crystalFTP/
 - [x] HELP command
 - [x] Object oriented version
 - [ ] Configuration file in JSON or YAML
-- [ ] Documentation
+- [x] Documentation
 - [ ] Specs
 - [ ] ACTIV mode
 - [ ] PASSIV mode
