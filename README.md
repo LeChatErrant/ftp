@@ -1,4 +1,4 @@
-# crystalFTP
+# CrystalFTP
 [![Build Status](https://travis-ci.org/LeChatErrant/crystalFTP.svg?branch=master)](https://travis-ci.org/LeChatErrant/crystalFTP)
 [![star this repo](http://githubbadges.com/star.svg?user=LeChatErrant&repo=crystalFTP&style=default)](https://github.com/LeChatErrant/crystalFTP)
 [![fork this repo](http://githubbadges.com/fork.svg?user=LeChatErrant&repo=crystalFTP&style=default)](https://github.com/LeChatErrant/crystalFTP/fork)
@@ -20,15 +20,31 @@ And don't hesitate to give a star if you like it, of course!
 
 ## Installation
 
-Run `shards install`
+1. Add the dependency to your `shard.yml`:
 
-## Build
+```yaml
+dependencies:
+  CrystalFTP:
+    github: LeChatErrant/CrystalFTP
+```
 
-`crystal build main.cr --release`
+2. Run `shards install`
 
 ## Usage
 
-`./main port root_directory`
+```crystal
+require "CrystalFTP"
+
+server = CrystalFTP::FTPServer.new(8000, "/home)
+server.start
+sleep
+
+```
+
+## Run example
+
+`crystal build example.cr --release`
+`./example port root_directory`
 
 ## Documentation
 
@@ -51,10 +67,11 @@ https://lechaterrant.github.io/crystalFTP/
 - [ ] PASSIV mode
 - [ ] Basic data transferts (LIST, RETR, STOR)
 - [ ] Other RFC95 compliant commands
+- [x] Making a shard of it
 
 ## Contributing
 
-1. Fork it (<https://github.com/LeChatErrant/crystalFTP/fork>)
+1. Fork it (<https://github.com/LeChatErrant/CrystalFTP/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
