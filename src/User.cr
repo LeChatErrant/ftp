@@ -1,5 +1,7 @@
 module CrystalFTP
+
   private class User
+
     getter root : String
     property socket : TCPSocket
     property server : TCPServer | Nil
@@ -22,4 +24,5 @@ module CrystalFTP
     end
 
   end
+
 end

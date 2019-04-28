@@ -2,7 +2,7 @@ require "socket"
 require "./commands/**"
 require "./User.cr"
 
-module CrystalFTP
+class CrystalFTP::FTPServer
 
   #Commands which can be used without being logged
   ANONYM_COMMANDS = { "quit", "user", "pass" }
@@ -24,5 +24,4 @@ module CrystalFTP
   "list" => ->list(User, Array(String)),
   "unknown" => ->unknown(User, Array(String))
   }
-
 end
