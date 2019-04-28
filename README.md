@@ -35,7 +35,7 @@ dependencies:
 ```crystal
 require "CrystalFTP"
 
-server = CrystalFTP::FTPServer.new(8000, "/home)
+server = CrystalFTP::FTPServer.new(8000, "/home")
 server.start
 sleep
 
