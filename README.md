@@ -47,6 +47,8 @@ sleep
 
 `./example port root_directory`
 
+This will run a FTP server, listening on the specified port and mounted on 'root_directory"
+
 ## Documentation
 
 https://lechaterrant.github.io/crystalFTP/
