@@ -44,6 +44,7 @@ sleep
 ## Run example
 
 `crystal build example.cr --release`
+
 `./example port root_directory`
 
 ## Documentation
