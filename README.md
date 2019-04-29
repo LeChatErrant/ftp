@@ -1,9 +1,9 @@
 # CrystalFTP
-[![Build Status](https://travis-ci.org/LeChatErrant/crystalFTP.svg?branch=master)](https://travis-ci.org/LeChatErrant/crystalFTP)
-[![star this repo](http://githubbadges.com/star.svg?user=LeChatErrant&repo=crystalFTP&style=default)](https://github.com/LeChatErrant/crystalFTP)
-[![fork this repo](http://githubbadges.com/fork.svg?user=LeChatErrant&repo=crystalFTP&style=default)](https://github.com/LeChatErrant/crystalFTP/fork)
-[![GitHub Issues](https://img.shields.io/github/issues/LeChatErrant/crystalFTP.svg)](https://github.com/LeChatErrant/crystalFTP/issues)
-[![GitHub contributors](https://img.shields.io/github/contributors/LeChatErrant/crystalFTP.svg)](https://GitHub.com/LeChatErrant/crystalFTP/graphs/contributors/)
+[![Build Status](https://travis-ci.org/LeChatErrant/CrystalFTP.svg?branch=master)](https://travis-ci.org/LeChatErrant/CrystalFTP)
+[![star this repo](http://githubbadges.com/star.svg?user=LeChatErrant&repo=CrystalFTP&style=default)](https://github.com/LeChatErrant/CrystalFTP)
+[![fork this repo](http://githubbadges.com/fork.svg?user=LeChatErrant&repo=CrystalFTP&style=default)](https://github.com/LeChatErrant/CrystalFTP/fork)
+[![GitHub Issues](https://img.shields.io/github/issues/LeChatErrant/CrystalFTP.svg)](https://github.com/LeChatErrant/CrystalFTP/issues)
+[![GitHub contributors](https://img.shields.io/github/contributors/LeChatErrant/CrystalFTP.svg)](https://GitHub.com/LeChatErrant/CrystalFTP/graphs/contributors/)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-green.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 > lightweight rfc95 FTP server written in crystal lang
@@ -53,7 +53,7 @@ This will run a FTP server, listening on the specified port and mounted on 'root
 
 ## Documentation
 
-https://lechaterrant.github.io/crystalFTP/
+https://lechaterrant.github.io/CrystalFTP/
 
 ## TODO
 
