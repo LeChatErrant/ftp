@@ -6,7 +6,7 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/LeChatErrant/CrystalFTP.svg)](https://GitHub.com/LeChatErrant/CrystalFTP/graphs/contributors/)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-green.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-> lightweight rfc95 FTP server written in crystal lang
+> lightweight RFC95 FTP server written in crystal lang
 
 ### Note from the creator
 
