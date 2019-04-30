@@ -19,7 +19,7 @@ module CrystalFTP
 
     def initialize(@file_path : String)
       if !File.exists?(@file_path)
-        raise "File doesnt exist."
+        raise "File #{file_path} doesnt exist."
       end
       @config_json = CrystalFTPJSON.from_json(File.read(@file_path))
     end
@@ -41,7 +41,7 @@ module CrystalFTP
 
     def initialize(@file_path : String)
       if !File.exists?(@file_path)
-        raise "File doesnt exist."
+        raise "File #{@file_path} doesnt exist."
       end
       @config_yaml = CrystalFTPYAML.from_yaml(File.read(@file_path))
     end
