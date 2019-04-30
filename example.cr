@@ -17,6 +17,6 @@ begin
   server.verbose_level = Logger::DEBUG
   server.start
 rescue exception
-  puts exception.message
+  puts "Error: #{exception.message}"
 end
 sleep

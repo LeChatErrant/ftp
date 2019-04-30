@@ -73,6 +73,7 @@ https://lechaterrant.github.io/CrystalFTP/
 - [ ] Basic data transferts (LIST, RETR, STOR)
 - [ ] Other RFC95 compliant commands
 - [x] Making a shard of it
+- [ ] Testing concurrency of the server
 
 ## Contributing
 

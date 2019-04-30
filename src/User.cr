@@ -18,12 +18,13 @@ module CrystalFTP
       @working_directory = root
     end
 
+    # TODO: multiline response
     def reply(code, message)
       @logger.debug "Code [#{code}] : #{message}"
       socket << code << " " << message << "\r\n"
     end
 
-    def quit()
+    def quit
       socket.close()
     end
 

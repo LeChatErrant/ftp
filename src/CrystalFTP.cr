@@ -63,7 +63,7 @@ module CrystalFTP
     # ```
     # NOTE : The returned FTP server is not listening for clients : it needs to be started, with `#start`
     def initialize(@port : Int32 = 2121, root : String = ".")
-      @server = TCPServer.new("0.0.0.0", port.to_i)
+      @server = TCPServer.new("0.0.0.0", @port)
       @root = File.expand_path(root)
       raise "Cannot mount the server on directory #{@root} : Directory not found." if !File.directory? @root
     end
@@ -89,7 +89,7 @@ module CrystalFTP
       @logger.level = level
     end
 
-    private def accept_client()
+    private def accept_client
       socket = @server.accept?
       return if socket.nil?
       handle_client(User.new(socket, @root, @logger))
@@ -127,7 +127,7 @@ module CrystalFTP
 
     private def handle_request(user, message)
       command, args = parse_command message
-      return if !is_authentified? user, command
+      return unless is_authentified? user, command
       callback = COMMANDS[command.downcase]?
       callback ||= COMMANDS["unknown"]
       callback.call(user, args)

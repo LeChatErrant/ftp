@@ -5,7 +5,7 @@ require "./User.cr"
 class CrystalFTP::FTPServer
 
   #Commands which can be used without being logged
-  ANONYM_COMMANDS = { "quit", "user", "pass" }
+  ANONYM_COMMANDS = { "quit", "user", "pass", "help" }
 
   #List of available commands, binded to their callbacks
   COMMANDS = {

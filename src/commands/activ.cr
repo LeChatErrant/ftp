@@ -1,3 +1,8 @@
+require "c/signal"
+require "c/stdlib"
+require "c/sys/times"
+require "c/unistd"
+
 private def parse_arg(arg)
   arg = arg.split(",")
   return {nil, nil} if arg.size != 6
