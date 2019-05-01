@@ -6,7 +6,7 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/LeChatErrant/CrystalFTP.svg)](https://GitHub.com/LeChatErrant/CrystalFTP/graphs/contributors/)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-green.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-> lightweight RFC95 FTP server written in crystal lang
+> lightweight RFC959 FTP server written in crystal lang
 
 ### Note from the creator
 
@@ -71,7 +71,7 @@ https://lechaterrant.github.io/CrystalFTP/
 - [ ] ACTIV mode
 - [ ] PASSIV mode
 - [ ] Basic data transferts (LIST, RETR, STOR)
-- [ ] Other RFC95 compliant commands
+- [ ] Other RFC959 compliant commands
 - [x] Making a shard of it
 - [ ] Testing concurrency of the server
 
