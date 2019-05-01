@@ -118,7 +118,7 @@ module CrystalFTP
     end
 
     private def is_authentified?(user, command)
-      if !user.is_authentified && !ANONYM_COMMANDS.includes? command
+      if !user.is_authentified && !ANONYM_COMMANDS.includes? command.downcase
         user.reply(530, "Please login with USER and PASS.")
         return false
       end
