@@ -4,15 +4,17 @@ module CrystalFTP
 
   private class User
 
+    property username = nil.as(String | Nil)
     getter root : String
     getter logger : Logger
     property socket : TCPSocket
-    property server : TCPServer | Nil
+    property data_server : TCPServer | Nil
     property data_socket : TCPSocket | Nil
     property working_directory : String
     property is_authentified = false
     property is_activ = false
-    property username = nil.as(String | Nil)
+    property activ_port : Int32 = 0
+    property activ_ip : String = ""
 
     def initialize(@socket, @root, @logger)
       @working_directory = root
@@ -26,6 +28,20 @@ module CrystalFTP
 
     def quit
       socket.close()
+    end
+
+    def activ_data_transfert
+      spawn do
+        @data_server.try &.close
+        @data_server = nil
+      end
+    end
+
+    def passiv_data_transfert
+      spawn do
+        @data_socket.try &.close
+        @data_socket = nil
+      end
     end
 
   end
