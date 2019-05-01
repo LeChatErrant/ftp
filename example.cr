@@ -18,4 +18,5 @@ begin
 rescue exception
   puts "Error: #{exception.message}"
 end
+
 sleep
