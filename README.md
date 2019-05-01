@@ -68,7 +68,7 @@ https://lechaterrant.github.io/CrystalFTP/
 - [ ] Configuration file in JSON or YAML
 - [x] Documentation
 - [ ] Specs
-- [ ] ACTIV mode
+- [x] ACTIV mode
 - [ ] PASSIV mode
 - [ ] Basic data transferts (LIST, RETR, STOR)
 - [ ] Other RFC959 compliant commands

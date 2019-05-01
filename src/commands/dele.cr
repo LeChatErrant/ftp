@@ -10,5 +10,5 @@ def dele(user, args)
   user.reply(250, "File successfully deleted.")
 rescue e
   user.logger.error e.message
-  user.reply(550, e.message)
+  user.reply(550, "#{e.message}")
 end
