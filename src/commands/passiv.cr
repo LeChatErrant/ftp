@@ -8,9 +8,11 @@ def pasv(user, args)
   # user.data_server.try &.close
   # user.data_server = TCPServer.new("0.0.0.0", binded_port, 1)
 
+  addr_in = LibC::SockaddrIn.new
 
-  fd = create_server(0, LibCExtension.htonl(LibCExtension::INADDR_ANY))
+  fd = create_server(0, LibCExtension.htonl(LibCExtension::INADDR_ANY), pointerof(addr_in), 1)
   puts fd
+  puts get_server_config(fd, pointerof(addr_in))
 
   # user.is_activ = false
   # user.logger.info "Entering passiv mode (port:#{binded_port}"
