@@ -40,11 +40,18 @@ module CrystalFTP
 
     private def passiv_data_transfert(command : String, args : Array(String), code : Int32, message : String)
       spawn do
-        unless activ_socket = @data_socket
+        unless passiv_server = @data_server
           reply(425, "Use PORT or PASV first")
           next
         end
+        passiv_socket = passiv_server.accept?
+        raise "Connection interrupted" unless passiv_socket
+        reply(code, message)
+        Process.run(command, args, output: passiv_socket, error: passiv_socket)
+        reply(226, "Data transfert success")
+        passiv_socket.close
       rescue e
+        reply(425, "Data transfert failed. (#{e.message})")
       ensure
         @data_server.try &.close
         @data_server = nil
