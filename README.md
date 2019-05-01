@@ -74,6 +74,7 @@ https://lechaterrant.github.io/CrystalFTP/
 - [ ] Other RFC959 compliant commands
 - [x] Making a shard of it
 - [ ] Testing concurrency of the server
+- [ ] Multiple simultaneous data transfert on the same user
 
 ## Contributing
 
