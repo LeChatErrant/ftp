@@ -55,7 +55,7 @@ This will run a FTP server, listening on the specified port and mounted on 'root
 
 https://lechaterrant.github.io/CrystalFTP/
 
-## TODO
+## Roadmap
 
 - [x] Simple server
 - [x] Handling multiple clients (one fiber per client)
@@ -69,7 +69,7 @@ https://lechaterrant.github.io/CrystalFTP/
 - [x] Documentation
 - [ ] Specs
 - [x] ACTIV mode
-- [ ] PASSIV mode
+- [x] PASSIV mode
 - [ ] Basic data transferts (LIST, RETR, STOR)
 - [ ] Other RFC959 compliant commands
 - [x] Making a shard of it
