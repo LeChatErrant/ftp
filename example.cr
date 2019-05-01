@@ -1,4 +1,3 @@
-require "logger"
 require "./src/CrystalFTP.cr"
 
 if ARGV.size != 2
