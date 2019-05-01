@@ -1,21 +1,20 @@
 require "../create_server.cr"
 
+private def send_passiv_config(user, ip, port)
+  ip = ip.split(".")
+  port = [port/256.as(Int), port%256]
+  user.reply(227, "Entering passiv mode (#{ip[0]},#{ip[1]},#{ip[2]},#{ip[3]},#{port[0]},#{port[1]})")
+end
+
 def pasv(user, args)
-
-  # # experiment with random port... not concluant
-  # binded_port = Random.rand(65535 - 1023) + 1023
-  # binded_port = 0
-  # user.data_server.try &.close
-  # user.data_server = TCPServer.new("0.0.0.0", binded_port, 1)
-
   addr_in = LibC::SockaddrIn.new
-
   fd = create_server(0, LibCExtension.htonl(LibCExtension::INADDR_ANY), pointerof(addr_in), 1)
-  puts fd
-  puts get_server_config(fd, pointerof(addr_in))
-
-  # user.is_activ = false
-  # user.logger.info "Entering passiv mode (port:#{binded_port}"
+  ip, port = get_server_config(fd, pointerof(addr_in))
+  send_passiv_config(user, ip, port)
+  user.data_server.try &.close
+  user.data_server = TCPServer.new(fd: fd)
+  user.is_activ = false
+  user.logger.info "Entering passiv mode (#{ip}:#{port}"
 rescue e
   user.reply(527, "PASV failed : #{e.message}")
 end
