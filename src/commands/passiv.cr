@@ -7,9 +7,7 @@ private def send_passiv_config(user, ip, port)
 end
 
 def pasv(user, args)
-  addr_in = LibC::SockaddrIn.new
-  fd = create_server(0, LibCExtension.htonl(LibCExtension::INADDR_ANY), pointerof(addr_in), 1)
-  ip, port = get_server_config(fd, pointerof(addr_in))
+  fd, ip, port = create_server(port: 0, in_addr: LibCExtension.htonl(LibCExtension::INADDR_ANY), max_con: 1)
   send_passiv_config(user, ip, port)
   user.data_server.try &.close
   user.data_server = TCPServer.new(fd: fd)
