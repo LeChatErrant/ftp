@@ -24,6 +24,8 @@ class CrystalFTP::FTPServer
   "pasv" => ->pasv(User, Array(String)),
   "port" => ->port(User, Array(String)),
   "list" => ->list(User, Array(String)),
+  "retr" => ->download(User, Array(String)),
+  "stor" => ->upload(User, Array(String)),
   "unknown" => ->unknown(User, Array(String))
   }
 end
