@@ -70,7 +70,7 @@ https://lechaterrant.github.io/CrystalFTP/
 - [ ] Specs
 - [x] ACTIV mode
 - [x] PASSIV mode
-- [ ] Basic data transferts (LIST, RETR, STOR)
+- [x] Basic data transferts (LIST, RETR, STOR)
 - [ ] Other RFC959 compliant commands
 - [x] Making a shard of it
 - [ ] Testing concurrency of the server

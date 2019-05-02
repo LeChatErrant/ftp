@@ -30,15 +30,15 @@ module CrystalFTP
       socket.close()
     end
 
-    def data_transfert(command : String, args : Array(String), code : Int32, message : String)
+    def data_transfert(command : String, args : Array(String), code : Int32, message : String, redirection : IO::FileDescriptor | Nil = nil)
       if @is_activ
-        activ_data_transfert(command, args, code, message)
+        activ_data_transfert(command, args, code, message, redirection)
       else
-        passiv_data_transfert(command, args, code, message)
+        passiv_data_transfert(command, args, code, message, redirection)
       end
     end
 
-    private def passiv_data_transfert(command : String, args : Array(String), code : Int32, message : String)
+    private def passiv_data_transfert(command : String, args : Array(String), code : Int32, message : String, redirection : IO::FileDescriptor | Nil)
       spawn do
         unless passiv_server = @data_server
           reply(425, "Use PORT or PASV first")
@@ -47,7 +47,11 @@ module CrystalFTP
         passiv_socket = passiv_server.accept?
         raise "Connection interrupted" unless passiv_socket
         reply(code, message)
-        Process.run(command, args, output: passiv_socket, error: passiv_socket)
+        if output_redirection = redirection
+          Process.run(command, args, input: passiv_socket, output: output_redirection, error: output_redirection)
+        else
+          Process.run(command, args, output: passiv_socket, error: passiv_socket)
+        end
         reply(226, "Data transfert success")
         passiv_socket.close
       rescue e
@@ -58,7 +62,7 @@ module CrystalFTP
       end
     end
 
-    private def activ_data_transfert(command : String, args : Array(String), code : Int32, message : String)
+    private def activ_data_transfert(command : String, args : Array(String), code : Int32, message : String, redirection : IO::FileDescriptor | Nil)
       spawn do
         unless activ_socket = @data_socket
           reply(425, "Use PORT or PASV first")
@@ -66,7 +70,11 @@ module CrystalFTP
         end
         activ_socket.connect(@activ_ip, @activ_port)
         reply(code, message)
-        Process.run(command, args, output: activ_socket, error: activ_socket)
+        if output_redirection = redirection
+          Process.run(command, args, input: activ_socket, output: output_redirection, error: output_redirection)
+        else
+          Process.run(command, args, output: activ_socket, error: activ_socket)
+        end
         reply(226, "Data transfert success")
       rescue e
         reply(425, "Data transfert failed. (#{e.message})")
