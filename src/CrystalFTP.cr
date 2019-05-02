@@ -82,6 +82,12 @@ module CrystalFTP
       end
     end
 
+    # Starting the FTP server, making clients able to connect and communicate with it
+    def bind
+      @logger.info "FTP server started, rooted at #{@root} and listening on port #{@port}..."
+      loop &->accept_client
+    end
+
     # Change the level of severity beyond which the logger of your `FTPServer` will print logs
     #
     # NOTE: When building in release mode, the severity is by default at Logger::ERROR. Otherwise, it is set by default at Logger::INFO
