@@ -1,4 +1,4 @@
-# CrystalFTP
+# ftp
 [![Build Status](https://travis-ci.org/LeChatErrant/ftp.svg?branch=master)](https://travis-ci.org/LeChatErrant/ftp)
 [![star this repo](http://githubbadges.com/star.svg?user=LeChatErrant&repo=ftp&style=default)](https://github.com/LeChatErrant/ftp)
 [![fork this repo](http://githubbadges.com/fork.svg?user=LeChatErrant&repo=ftp&style=default)](https://github.com/LeChatErrant/ftp/fork)
