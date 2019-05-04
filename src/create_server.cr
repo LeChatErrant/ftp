@@ -4,7 +4,7 @@ module CrystalFTP
   private def open_server_socket : Int
     fd = LibC.socket(LibC::AF_INET, LibC::SOCK_STREAM, 0)
     raise Errno.new(" [socket] ") if fd < 0
-    return fd
+    fd
   end
 
   private def init_server_socket(addr_in : LibC::SockaddrIn*, port : LibC::UInt16T, in_addr : LibC::InAddrT) : Nil
