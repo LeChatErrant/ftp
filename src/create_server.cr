@@ -1,4 +1,4 @@
-require "../lib/lib_c_extension.cr"
+require "./lib_c_extension.cr"
 
 module Ftp
   private module RawServer
