@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.28.0">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
+  <meta id="repository-name" content="github.com/LeChatErrant/ftp">
+  <title>Ftp::FTPServer - github.com/LeChatErrant/ftp</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="github.com/LeChatErrant/ftp/Ftp" data-name="ftp">
+      <a href="../Ftp.html">Ftp</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="github.com/LeChatErrant/ftp/Ftp/FTPServer" data-name="ftp::ftpserver">
+      <a href="../Ftp/FTPServer.html">FTPServer</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Ftp::FTPServer
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Ftp/FTPServer.html">Ftp::FTPServer</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Example of utilisation</p>
+
+<pre><code><span class="k">include</span> <span class="t">Ftp</span>
+server <span class="o">=</span> <span class="t">FTPServer</span>.<span class="k">new</span>(<span class="n">8000</span>, <span class="s">&quot;.&quot;</span>)
+server.start
+sleep</code></pre>
+
+<p>This will launch a FTP server, listening for clients at port 8000, rooted in the current directory</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/ftp.cr#L27" target="_blank">
+        ftp.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands.cr#L6" target="_blank">
+        commands.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="ANONYMOUS">
+        <strong>ANONYMOUS</strong> = <code><span class="s">&quot;anonymous&quot;</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Downcased anonymous username
+ (meaning connecting with it will start an anonymous session)</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="PASSWORD">
+        <strong>PASSWORD</strong> = <code><span class="s">&quot;password&quot;</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Default password for new users</p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28port%3AInt32%3D2121%2Croot%3AString%3D%26quot%3B.%26quot%3B%29-class-method" class="signature"><strong>.new</strong>(port : Int32 = <span class="n">2121</span>, root : String = <span class="s">&quot;.&quot;</span>)</a>
+        
+          <div class="summary"><p>Create a FTP server, configurate to listen to <code><a href="../Ftp/FTPServer.html#port%3AInt32-instance-method">#port</a></code>, and mounted on <code><a href="../Ftp/FTPServer.html#root%3AString-instance-method">#root</a></code></p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#bind-instance-method" class="signature"><strong>#bind</strong></a>
+        
+          <div class="summary"><p>Starting the FTP server, making clients able to connect and communicate with it</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#port%3AInt32-instance-method" class="signature"><strong>#port</strong> : Int32</a>
+        
+          <div class="summary"><p>Port on which the server listen</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#root%3AString-instance-method" class="signature"><strong>#root</strong> : String</a>
+        
+          <div class="summary"><p>Path on which the server is mounted</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#start-instance-method" class="signature"><strong>#start</strong></a>
+        
+          <div class="summary"><p>Starting the FTP server, making clients able to connect and communicate with it</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#verbose_level%3D%28level%3ALogger%3A%3ASeverity%29-instance-method" class="signature"><strong>#verbose_level=</strong>(level : Logger::Severity)</a>
+        
+          <div class="summary"><p>Change the level of severity beyond which the logger of your <code><a href="../Ftp/FTPServer.html">FTPServer</a></code> will print logs</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Macro Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#default_severity_level-macro" class="signature"><strong>default_severity_level</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(port:Int32=2121,root:String=&amp;quot;.&amp;quot;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(port : Int32 = <span class="n">2121</span>, root : String = <span class="s">&quot;.&quot;</span>)
+
+        <a class="method-permalink" href="#new%28port%3AInt32%3D2121%2Croot%3AString%3D%26quot%3B.%26quot%3B%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Create a FTP server, configurate to listen to <code><a href="../Ftp/FTPServer.html#port%3AInt32-instance-method">#port</a></code>, and mounted on <code><a href="../Ftp/FTPServer.html#root%3AString-instance-method">#root</a></code></p>
+
+<pre><code>my_ftp_server <span class="o">=</span> <span class="t">Ftp</span><span class="t">::</span><span class="t">FTPServer</span>.<span class="k">new</span>(port: <span class="n">8000</span>, root: <span class="s">&quot;/home&quot;</span>)</code></pre>
+
+<p><span class="flag purple">NOTE</span>  : The returned FTP server is not listening for clients : it needs to be started, with <code><a href="../Ftp/FTPServer.html#start-instance-method">#start</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/ftp.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="bind-instance-method">
+      <div class="signature">
+        
+        def <strong>bind</strong>
+
+        <a class="method-permalink" href="#bind-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Starting the FTP server, making clients able to connect and communicate with it</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/ftp.cr#L84" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="port:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>port</strong> : Int32
+
+        <a class="method-permalink" href="#port%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Port on which the server listen</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/ftp.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="root:String-instance-method">
+      <div class="signature">
+        
+        def <strong>root</strong> : String
+
+        <a class="method-permalink" href="#root%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Path on which the server is mounted</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/ftp.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="start-instance-method">
+      <div class="signature">
+        
+        def <strong>start</strong>
+
+        <a class="method-permalink" href="#start-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Starting the FTP server, making clients able to connect and communicate with it</p>
+
+<p><span class="flag purple">NOTE</span>  The exection is launched in a fiber, so the rest of your program is not blocked</p>
+
+<pre><code>my_ftp_server.start
+<span class="c"># From now, the server is accepting clients and handling them properly</span>
+sleep <span class="c"># Yield the execution</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/ftp.cr#L76" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="verbose_level=(level:Logger::Severity)-instance-method">
+      <div class="signature">
+        
+        def <strong>verbose_level=</strong>(level : Logger::Severity)
+
+        <a class="method-permalink" href="#verbose_level%3D%28level%3ALogger%3A%3ASeverity%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Change the level of severity beyond which the logger of your <code><a href="../Ftp/FTPServer.html">FTPServer</a></code> will print logs</p>
+
+<p><span class="flag purple">NOTE</span>  When building in release mode, the severity is by default at Logger::ERROR. Otherwise, it is set by default at Logger::INFO</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/ftp.cr#L92" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Macro Detail</h2>
+  
+    <div class="entry-detail" id="default_severity_level-macro">
+      <div class="signature">
+        
+        macro <strong>default_severity_level</strong>
+
+        <a class="method-permalink" href="#default_severity_level-macro">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/ftp.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+</body>
+</html>

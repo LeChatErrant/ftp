@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.28.0">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
+  <meta id="repository-name" content="github.com/LeChatErrant/ftp">
+  <title>README - github.com/LeChatErrant/ftp</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="github.com/LeChatErrant/ftp/Ftp" data-name="ftp">
+      <a href="Ftp.html">Ftp</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/LeChatErrant/ftp/Ftp/FTPServer" data-name="ftp::ftpserver">
+      <a href="Ftp/FTPServer.html">FTPServer</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1>ftp</h1>
+
+<p><a href="https://travis-ci.org/LeChatErrant/ftp" target="_blank"><img src="https://travis-ci.org/LeChatErrant/ftp.svg?branch=master" alt="Build Status"/></a>
+<a href="https://github.com/LeChatErrant/ftp" target="_blank"><img src="http://githubbadges.com/star.svg?user=LeChatErrant&repo=ftp&style=default" alt="star this repo"/></a>
+<a href="https://github.com/LeChatErrant/ftp/fork" target="_blank"><img src="http://githubbadges.com/fork.svg?user=LeChatErrant&repo=ftp&style=default" alt="fork this repo"/></a>
+<a href="https://github.com/LeChatErrant/ftp/issues" target="_blank"><img src="https://img.shields.io/github/issues/LeChatErrant/ftp.svg" alt="GitHub Issues"/></a>
+<a href="https://GitHub.com/LeChatErrant/ftp/graphs/contributors/" target="_blank"><img src="https://img.shields.io/github/contributors/LeChatErrant/ftp.svg" alt="GitHub contributors"/></a>
+<img src="https://img.shields.io/badge/contributions-welcome-green.svg" alt="Contributions welcome"/>
+<a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"/></a></p>
+
+<blockquote>lightweight RFC959 FTP server written in crystal lang</blockquote>
+
+<h3>Note from the creator</h3>
+
+<p>Hello guys! ;)</p>
+
+<p>This little baby is still under development. My goal is to make a shard of it once totally finished.</p>
+
+<p>Actually, it's my first project written in Crystal : feel free to contribute, or to send tips ! I'm doing it only to train myself.</p>
+
+<p>And don't hesitate to give a star if you like it, of course!</p>
+
+<h2>Installation</h2>
+
+<ol><li>Add the dependency to your <code>shard.yml</code>:</li></ol>
+
+<pre><code class="language-yaml">dependencies:
+  ftp:
+    github: LeChatErrant/ftp</code></pre>
+
+<ol><li>Run <code>shards install</code></li></ol>
+
+<h2>Usage</h2>
+
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;ftp&quot;</span>
+
+server <span class="o">=</span> <span class="t">Ftp</span><span class="t">::</span><span class="t">FTPServer</span>.<span class="k">new</span>(<span class="n">8000</span>, <span class="s">&quot;/home&quot;</span>)
+server.start
+sleep
+</code></pre>
+
+<h2>Run example</h2>
+
+<p>You can find an example of utilisation at the root of the repository</p>
+
+<p>To try it, simply run <code>crystal build example.cr --release</code></p>
+
+<p>Then you can execute it with <code>./example port root_directory</code></p>
+
+<p>This will run a FTP server, listening on the specified port and mounted on 'root_directory'</p>
+
+<h2>Documentation</h2>
+
+<p>https://lechaterrant.github.io/ftp/</p>
+
+<h2>Roadmap</h2>
+
+<ul><li>[x] Simple server</li><li>[x] Handling multiple clients (one fiber per client)</li><li>[x] Basic commands (QUIT, NOOP, USER, PASS, UNKNOWN)</li><li>[x] Basic working directory commands (PWD, CWD, CDUP)</li><li>[x] DELE command</li><li>[ ] TYPE command</li><li>[x] HELP command</li><li>[x] Object oriented version</li><li>[ ] Configuration file in JSON or YAML</li><li>[x] Documentation</li><li>[ ] Specs</li><li>[x] ACTIV mode</li><li>[x] PASSIV mode</li><li>[x] Basic data transferts (LIST, RETR, STOR)</li><li>[ ] Other RFC959 compliant commands</li><li>[x] Making a shard of it</li><li>[ ] Testing concurrency of the server</li><li>[ ] Multiple simultaneous data transfert on the same user</li></ul>
+
+<h2>Contributing</h2>
+
+<ol><li>Fork it (&lt;https://github.com/LeChatErrant/ftp/fork>)</li><li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li><li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li><li>Push to the branch (<code>git push origin my-new-feature</code>)</li><li>Create a new Pull Request</li></ol>
+
+<h2>Contributors</h2>
+
+<ul><li><a href="https://github.com/LeChatErrant" target="_blank">LeChatErrant</a> - creator and maintainer</li></ul>
+</div>
+</body>
+</html>

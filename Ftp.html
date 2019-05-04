@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.28.0">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
+  <meta id="repository-name" content="github.com/LeChatErrant/ftp">
+  <title>Ftp - github.com/LeChatErrant/ftp</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="github.com/LeChatErrant/ftp/Ftp" data-name="ftp">
+      <a href="Ftp.html">Ftp</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/LeChatErrant/ftp/Ftp/FTPServer" data-name="ftp::ftpserver">
+      <a href="Ftp/FTPServer.html">FTPServer</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Ftp
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>An FTP server , or File Transfert Protocol server, is a server used to store files and interact with it from a remote client, through a protocol edicted by the RFC95</p>
+
+<p>Ftp is the module containing the <code><a href="Ftp/FTPServer.html">FTPServer</a></code> class, the main class for</p>
+
+<p>Example of utilisation</p>
+
+<pre><code><span class="k">include</span> <span class="t">Ftp</span>
+server <span class="o">=</span> <span class="t">FTPServer</span>.<span class="k">new</span>(<span class="n">8000</span>, <span class="s">&quot;.&quot;</span>)
+server.start
+sleep</code></pre>
+
+<p>This will launch a FTP server, listening for clients at port 8000, rooted in the current directory</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/activ.cr#L9" target="_blank">
+        commands/activ.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/dele.cr#L3" target="_blank">
+        commands/dele.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/download.cr#L1" target="_blank">
+        commands/download.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/help.cr#L3" target="_blank">
+        commands/help.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/list.cr#L1" target="_blank">
+        commands/list.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/user.cr#L3" target="_blank">
+        user.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/ftp.cr#L18" target="_blank">
+        ftp.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/login.cr#L3" target="_blank">
+        commands/login.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/noop.cr#L1" target="_blank">
+        commands/noop.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/create_server.cr#L3" target="_blank">
+        create_server.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/passiv.cr#L9" target="_blank">
+        commands/passiv.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/quit.cr#L1" target="_blank">
+        commands/quit.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/size.cr#L3" target="_blank">
+        commands/size.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/type.cr#L1" target="_blank">
+        commands/type.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/unknown.cr#L1" target="_blank">
+        commands/unknown.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/upload.cr#L1" target="_blank">
+        commands/upload.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands/working_directory.cr#L1" target="_blank">
+        commands/working_directory.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/LeChatErrant/ftp/blob/9beed42c6e11c8fcd63c71ca11b613e0bcebc8f6/src/commands.cr#L5" target="_blank">
+        commands.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
