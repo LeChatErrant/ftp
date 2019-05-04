@@ -6,10 +6,10 @@ WORKDIR /crystalFTP
 ADD src/ ./src
 ADD spec/ ./spec
 ADD lib/ ./lib
-COPY main.cr .
+COPY example.cr .
 COPY shard.yml .
 
 RUN shards install
-RUN crystal build main.cr --release
+RUN crystal build example.cr --release
 
-CMD ["./main", "8000", "."]
+CMD ["./example", "8000", "."]

@@ -1,8 +1,8 @@
 require "socket"
 require "./commands/**"
-require "./User.cr"
+require "./user.cr"
 
-class CrystalFTP::FTPServer
+class Ftp::FTPServer
   # :nodoc:
   # Commands which can be used without being logged
   ANONYM_COMMANDS = {"quit", "user", "pass", "help"}

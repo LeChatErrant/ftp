@@ -1,9 +1,9 @@
 # CrystalFTP
-[![Build Status](https://travis-ci.org/LeChatErrant/CrystalFTP.svg?branch=master)](https://travis-ci.org/LeChatErrant/CrystalFTP)
-[![star this repo](http://githubbadges.com/star.svg?user=LeChatErrant&repo=CrystalFTP&style=default)](https://github.com/LeChatErrant/CrystalFTP)
-[![fork this repo](http://githubbadges.com/fork.svg?user=LeChatErrant&repo=CrystalFTP&style=default)](https://github.com/LeChatErrant/CrystalFTP/fork)
-[![GitHub Issues](https://img.shields.io/github/issues/LeChatErrant/CrystalFTP.svg)](https://github.com/LeChatErrant/CrystalFTP/issues)
-[![GitHub contributors](https://img.shields.io/github/contributors/LeChatErrant/CrystalFTP.svg)](https://GitHub.com/LeChatErrant/CrystalFTP/graphs/contributors/)
+[![Build Status](https://travis-ci.org/LeChatErrant/ftp.svg?branch=master)](https://travis-ci.org/LeChatErrant/ftp)
+[![star this repo](http://githubbadges.com/star.svg?user=LeChatErrant&repo=ftp&style=default)](https://github.com/LeChatErrant/ftp)
+[![fork this repo](http://githubbadges.com/fork.svg?user=LeChatErrant&repo=ftp&style=default)](https://github.com/LeChatErrant/ftp/fork)
+[![GitHub Issues](https://img.shields.io/github/issues/LeChatErrant/ftp.svg)](https://github.com/LeChatErrant/ftp/issues)
+[![GitHub contributors](https://img.shields.io/github/contributors/LeChatErrant/ftp.svg)](https://GitHub.com/LeChatErrant/ftp/graphs/contributors/)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-green.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 > lightweight RFC959 FTP server written in crystal lang
@@ -24,8 +24,8 @@ And don't hesitate to give a star if you like it, of course!
 
 ```yaml
 dependencies:
-  CrystalFTP:
-    github: LeChatErrant/CrystalFTP
+  ftp:
+    github: LeChatErrant/ftp
 ```
 
 2. Run `shards install`
@@ -33,9 +33,9 @@ dependencies:
 ## Usage
 
 ```crystal
-require "CrystalFTP"
+require "ftp"
 
-server = CrystalFTP::FTPServer.new(8000, "/home")
+server = Ftp::FTPServer.new(8000, "/home")
 server.start
 sleep
 
@@ -53,7 +53,7 @@ This will run a FTP server, listening on the specified port and mounted on 'root
 
 ## Documentation
 
-https://lechaterrant.github.io/CrystalFTP/
+https://lechaterrant.github.io/ftp/
 
 ## Roadmap
 
@@ -78,7 +78,7 @@ https://lechaterrant.github.io/CrystalFTP/
 
 ## Contributing
 
-1. Fork it (<https://github.com/LeChatErrant/CrystalFTP/fork>)
+1. Fork it (<https://github.com/LeChatErrant/ftp/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

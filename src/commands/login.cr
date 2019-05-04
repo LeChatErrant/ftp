@@ -1,6 +1,6 @@
-require "../CrystalFTP.cr"
+require "../ftp.cr"
 
-module CrystalFTP
+module Ftp
   private def user(user user_session, args)
     if args.size != 1
       user_session.reply(530, "Permission denied.")
@@ -17,7 +17,7 @@ module CrystalFTP
       user.reply(230, "Already logged in.")
     elsif user.username.nil?
       user.reply(503, "Login with USER first.")
-    elsif user.username == CrystalFTP::FTPServer::ANONYMOUS || args[0] == CrystalFTP::FTPServer::PASSWORD
+    elsif user.username == Ftp::FTPServer::ANONYMOUS || args[0] == Ftp::FTPServer::PASSWORD
       user.is_authentified = true
       user.reply(230, "Login successful.")
     else

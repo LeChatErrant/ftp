@@ -6,7 +6,7 @@ private def send_passiv_config(user, ip, port)
   user.reply(227, "Entering passiv mode (#{ip[0]},#{ip[1]},#{ip[2]},#{ip[3]},#{port[0]},#{port[1]})")
 end
 
-module CrystalFTP
+module Ftp
   private def pasv(user, args)
     fd, ip, port = create_raw_server(port: 0, in_addr: LibCExtension.htonl(LibCExtension::INADDR_ANY), max_con: 1)
     send_passiv_config(user, ip, port)

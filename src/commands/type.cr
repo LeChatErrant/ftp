@@ -1,4 +1,4 @@
-module CrystalFTP
+module Ftp
   private def type(user, args)
     if args.size != 1
       user.reply(500, "Unrecognized type command.")

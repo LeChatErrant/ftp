@@ -1,6 +1,6 @@
 require "logger"
 
-module CrystalFTP
+module Ftp
   private class User
     property username = nil.as(String | Nil)
     getter root : String

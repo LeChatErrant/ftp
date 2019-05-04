@@ -1,6 +1,6 @@
 require "../lib/lib_c_extension.cr"
 
-module CrystalFTP
+module Ftp
   private def open_server_socket : Int
     fd = LibC.socket(LibC::AF_INET, LibC::SOCK_STREAM, 0)
     raise Errno.new(" [socket] ") if fd < 0

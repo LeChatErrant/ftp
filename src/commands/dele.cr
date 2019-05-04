@@ -1,6 +1,6 @@
 require "file_utils"
 
-module CrystalFTP
+module Ftp
   private def dele(user, args)
     return user.reply(550, "Failed to delete file.") if args.size != 1
     path = File.expand_path(args[0], user.working_directory)

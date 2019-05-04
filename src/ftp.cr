@@ -1,24 +1,24 @@
 require "socket"
 require "logger"
-require "./Commands.cr"
-require "./User.cr"
+require "./commands.cr"
+require "./user.cr"
 
 # An FTP server , or File Transfert Protocol server, is a server used to store files and interact with it from a remote client, through a protocol edicted by the RFC95
 #
-# CrystalFTP is the module containing the `FTPServer` class, the main class for
+# Ftp is the module containing the `FTPServer` class, the main class for
 #
 # Example of utilisation
 # ```
-# include CrystalFTP
+# include Ftp
 # server = FTPServer.new(8000, ".")
 # server.start
 # sleep
 # ```
 # This will launch a FTP server, listening for clients at port 8000, rooted in the current directory
-module CrystalFTP
+module Ftp
   # Example of utilisation
   # ```
-  # include CrystalFTP
+  # include Ftp
   # server = FTPServer.new(8000, ".")
   # server.start
   # sleep
@@ -57,7 +57,7 @@ module CrystalFTP
     # Create a FTP server, configurate to listen to `port`, and mounted on `root`
     #
     # ```
-    # my_ftp_server = CrystalFTP::FTPServer.new(port: 8000, root: "/home")
+    # my_ftp_server = Ftp::FTPServer.new(port: 8000, root: "/home")
     # ```
     # NOTE : The returned FTP server is not listening for clients : it needs to be started, with `#start`
     def initialize(@port : Int32 = 2121, root : String = ".")

@@ -1,4 +1,4 @@
-module CrystalFTP
+module Ftp
   private def list(user, args)
     process_args = ["-la"]
     process_args << (args.size > 0 ? File.expand_path(args[0], user.working_directory) : user.working_directory)

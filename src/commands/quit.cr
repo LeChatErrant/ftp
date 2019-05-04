@@ -1,4 +1,4 @@
-module CrystalFTP
+module Ftp
   private def quit(user, args)
     user.reply(221, "Goodbye.")
     user.quit

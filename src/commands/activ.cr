@@ -1,8 +1,3 @@
-require "c/signal"
-require "c/stdlib"
-require "c/sys/times"
-require "c/unistd"
-
 private def parse_arg(arg)
   arg = arg.split(",")
   return {nil, nil} if arg.size != 6
@@ -11,7 +6,7 @@ private def parse_arg(arg)
   {ip, port}
 end
 
-module CrystalFTP
+module Ftp
   private def port(user, args)
     return user.reply(500, "Illegal PORT command.") if args.size != 1
     ip, port = parse_arg(args[0])

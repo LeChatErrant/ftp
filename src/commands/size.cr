@@ -1,6 +1,6 @@
 require "file_utils"
 
-module CrystalFTP
+module Ftp
   private def size(user, args)
     return user.reply(501, "Syntax error") if args.size != 1
     path = File.expand_path(args[0], user.working_directory)

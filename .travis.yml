@@ -6,7 +6,7 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  project_name: CrystalFTP
+  project_name: ftp
   on:
     branch: master
   local_dir: docs

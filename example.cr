@@ -1,11 +1,11 @@
-require "./src/CrystalFTP.cr"
+require "./src/ftp.cr"
 
 if ARGV.size != 2
-  STDERR.puts "Usage:\n\t./crystalFTP port root_directory"
+  STDERR.puts "Usage:\n\t./example port root_directory"
   exit 84
 end
 
-include CrystalFTP
+include Ftp
 
 port, root = ARGV
 

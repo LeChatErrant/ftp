@@ -1,4 +1,4 @@
-module CrystalFTP
+module Ftp
   private def pwd(user, args)
     user.reply(257, "\"#{user.working_directory}\"")
   end
