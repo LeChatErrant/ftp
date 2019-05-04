@@ -1,9 +1,7 @@
 require "logger"
 
 module CrystalFTP
-
   private class User
-
     property username = nil.as(String | Nil)
     getter root : String
     getter logger : Logger
@@ -27,7 +25,7 @@ module CrystalFTP
     end
 
     def quit
-      socket.close()
+      socket.close
     end
 
     def data_transfert(command : String, args : Array(String), code : Int32, message : String, redirection : IO::FileDescriptor | Nil = nil)
@@ -83,6 +81,5 @@ module CrystalFTP
         @data_socket = nil
       end
     end
-
   end
 end

@@ -16,7 +16,6 @@ require "./User.cr"
 # ```
 # This will launch a FTP server, listening for clients at port 8000, rooted in the current directory
 module CrystalFTP
-
   # Example of utilisation
   # ```
   # include CrystalFTP
@@ -26,7 +25,6 @@ module CrystalFTP
   # ```
   # This will launch a FTP server, listening for clients at port 8000, rooted in the current directory
   class FTPServer
-
     # :nodoc:
     VERSION = "0.3.0"
 
@@ -138,6 +136,5 @@ module CrystalFTP
       callback ||= COMMANDS["unknown"]
       callback.call(user, args)
     end
-
   end
 end

@@ -2,7 +2,7 @@ require "../create_server.cr"
 
 private def send_passiv_config(user, ip, port)
   ip = ip.split(".")
-  port = [port/256.as(Int), port%256]
+  port = [(port / 256).as(Int), port % 256]
   user.reply(227, "Entering passiv mode (#{ip[0]},#{ip[1]},#{ip[2]},#{ip[3]},#{port[0]},#{port[1]})")
 end
 

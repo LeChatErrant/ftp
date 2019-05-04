@@ -1,7 +1,7 @@
 require "../lib/lib_c_extension.cr"
 
 module CrystalFTP
-  private def open_server_socket() : Int
+  private def open_server_socket : Int
     fd = LibC.socket(LibC::AF_INET, LibC::SOCK_STREAM, 0)
     raise Errno.new(" [socket] ") if fd < 0
     return fd
@@ -29,7 +29,7 @@ module CrystalFTP
     raise Errno.new(" [getsockname] ") if ret < 0
     str = LibC::Char[LibCExtension::INET_ADDRSTRLEN]
     sin_addr = addr_in.value.sin_addr
-    ip =  String.new LibC.inet_ntop(LibC::AF_INET, pointerof(sin_addr), str, LibCExtension::INET_ADDRSTRLEN)
+    ip = String.new LibC.inet_ntop(LibC::AF_INET, pointerof(sin_addr), str, LibCExtension::INET_ADDRSTRLEN)
     port = LibC.ntohs(addr_in.value.sin_port)
     {ip, port}
   end
