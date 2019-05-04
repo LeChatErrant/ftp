@@ -7,16 +7,18 @@ private def parse_arg(arg)
 end
 
 module Ftp
-  private def port(user, args)
-    return user.reply(500, "Illegal PORT command.") if args.size != 1
-    ip, port = parse_arg(args[0])
-    return user.reply(500, "Illegal PORT command.") if !ip || !port
-    user.logger.info "Entering activ mode on #{ip}:#{port}"
-    user.data_socket.try &.close
-    user.data_socket = TCPSocket.new
-    user.is_activ = true
-    user.activ_port = port
-    user.activ_ip = ip
-    user.reply(200, "PORT command successful (ip:#{ip}, port:#{port}). Consider using PASV.")
+  private class Commands
+    def self.port(user, args)
+      return user.reply(500, "Illegal PORT command.") if args.size != 1
+      ip, port = parse_arg(args[0])
+      return user.reply(500, "Illegal PORT command.") if !ip || !port
+      user.logger.info "Entering activ mode on #{ip}:#{port}"
+      user.data_socket.try &.close
+      user.data_socket = TCPSocket.new
+      user.is_activ = true
+      user.activ_port = port
+      user.activ_ip = ip
+      user.reply(200, "PORT command successful (ip:#{ip}, port:#{port}). Consider using PASV.")
+    end
   end
 end

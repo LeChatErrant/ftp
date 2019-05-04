@@ -7,14 +7,16 @@ private def send_passiv_config(user, ip, port)
 end
 
 module Ftp
-  private def pasv(user, args)
-    fd, ip, port = create_raw_server(port: 0, in_addr: LibCExtension.htonl(LibCExtension::INADDR_ANY), max_con: 1)
-    send_passiv_config(user, ip, port)
-    user.data_server.try &.close
-    user.data_server = TCPServer.new(fd: fd)
-    user.is_activ = false
-    user.logger.info "Entering passiv mode (#{ip}:#{port}"
-  rescue e
-    user.reply(527, "PASV failed : #{e.message}")
+  private class Commands
+    def self.pasv(user, args)
+      fd, ip, port = RawServer.create_raw_server(port: 0, in_addr: LibCExtension.htonl(LibCExtension::INADDR_ANY), max_con: 1)
+      send_passiv_config(user, ip, port)
+      user.data_server.try &.close
+      user.data_server = TCPServer.new(fd: fd)
+      user.is_activ = false
+      user.logger.info "Entering passiv mode (#{ip}:#{port}"
+    rescue e
+      user.reply(527, "PASV failed : #{e.message}")
+    end
   end
 end
