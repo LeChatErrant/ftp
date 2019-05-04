@@ -2,7 +2,6 @@ require "../lib/lib_c_extension.cr"
 
 module Ftp
   private module RawServer
-
     extend self
 
     private def open_server_socket : Int
