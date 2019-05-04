@@ -21,6 +21,7 @@ class CrystalFTP::FTPServer
   "cdup" => ->cdup(User, Array(String)),
   "type" => ->type(User, Array(String)),
   "dele" => ->dele(User, Array(String)),
+  "size" => ->size(User, Array(String)),
   "pasv" => ->pasv(User, Array(String)),
   "port" => ->port(User, Array(String)),
   "list" => ->list(User, Array(String)),
